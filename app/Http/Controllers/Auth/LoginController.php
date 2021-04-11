@@ -61,7 +61,8 @@ public function username()
 
         if (auth()->validate(array($fieldType => $request->username, 'password' => $request->password))) {
             if (Auth::attempt(array($fieldType => $input['username'], 'password' => $input['password']))) {
-                return response()->json(array('route'=>route('home')));
+                // return response()->json(array('route'=>route('home')));
+                return redirect()->route('home');
             }
         } else {
             $errors = [$this->username() => 'Invalid account.'];
