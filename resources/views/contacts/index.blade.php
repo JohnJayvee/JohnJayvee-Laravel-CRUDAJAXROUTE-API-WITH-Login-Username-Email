@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-sm-12">
             <h1 class="display-3">Contacts</h1>
-            <table class="table table-striped">
+            <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
                         <td>ID</td>
@@ -13,7 +13,8 @@
                         <td>Job Title</td>
                         <td>City</td>
                         <td>Country</td>
-                        <td colspan=3>Actions</td>
+                        <td colspan="3" style="text-align: center;">Action</td>
+                        <td hidden></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,19 +26,21 @@
                             <td>{{ $contact->job_title }}</td>
                             <td>{{ $contact->city }}</td>
                             <td>{{ $contact->country }}</td>
-                            <td>
+                            <td white-space: pre;>
                                 <a href="{{ route('contact.show', $contact->id) }}" class="btn btn-warning">Show</a>
                             </td>
+
                             <td>
                                 <a href="{{ route('contact.edit', $contact->id) }}" class="btn btn-primary">Edit</a>
                             </td>
                             <td>
-                                <form method="post" action="{{ route('contact.destroy', $contact->id) }}" >
+                                <form method="post" action="{{ route('contact.destroy', $contact->id) }}">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger" type="submit">Delete</button>
                                 </form>
                             </td>
+                            <td hidden></td>
                         </tr>
                     @endforeach
                 </tbody>
